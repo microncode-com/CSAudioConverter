@@ -1,0 +1,129 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CSAudioConverterExampleVB
+</name>
+</assembly>
+<members>
+<member name="T:CSAudioConverterExampleVB.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:CSAudioConverterExampleVB.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:CSAudioConverterExampleVB.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.AudioConverter1_ConvertDone(System.Object,System.EventArgs)">
+ <summary>
+ When the operation has done.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.AudioConverter1_ConvertError(System.Object,CSAudioConverter.MessageArgs)">
+ <summary>
+ On error.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.AudioConverter1_ConvertProgress(System.Object,CSAudioConverter.PercentArgs)">
+ <summary>
+ On progress.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.AudioConverter1_ConvertStart(System.Object,System.EventArgs)">
+ <summary>
+ When start the operation.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.frmAudioConverter_Load(System.Object,System.EventArgs)">
+ <summary>
+ Form_Load event. Load the audio properties from the AudioConverter control to the form controls.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.SetDestinationFileName">
+ <summary>
+ Set the destination file. This example use the default music folder of Windows.
+ </summary>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cmdConvert_Click(System.Object,System.EventArgs)">
+ <summary>
+ Convert, join and cut the source audio file(s).
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cmdCancel_Click(System.Object,System.EventArgs)">
+ <summary>
+ Cancel the operation.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cmdPause_Click(System.Object,System.EventArgs)">
+ <summary>
+ Pause the operation.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cmdResume_Click(System.Object,System.EventArgs)">
+ <summary>
+ Resume the operation.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cmdSelectMediaFile1_Click(System.Object,System.EventArgs)">
+ <summary>
+ Select the first and the default multimedia file.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cmdSelectMediaFile2_Click(System.Object,System.EventArgs)">
+ <summary>
+ Select the second multimedia file (for joining).
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cboACMTags_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Get ACM formats according to the selected tag.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.cboDestinationFormat_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ When selecting the ACM WAV format, display the ACM Tags and Formats.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CSAudioConverterExampleVB.frmAudioConverter.frmAudioConverter_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+ <summary>
+ Safe exit.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+</members>
+</doc>

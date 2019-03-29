@@ -1,0 +1,1572 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CSAudioConverter</name>
+    </assembly>
+    <members>
+        <member name="P:AudioCDReaderLib.AudioCDReader.WaveFormat">
+            <summary>
+            Gets the <see cref="P:AudioCDReaderLib.AudioCDReader.WaveFormat" /> of the waveform-audio data.
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.AudioCDReader.TrackInfo">
+            <summary>
+            The struct of the track information.
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.AudioCDReader.CDIsReady(System.Int32)">
+            <summary>
+            Check if the CD drive is ready.
+            </summary>
+            <param name="DriveIndex">The CD drive index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AudioCDReaderLib.AudioCDReader.EjectCD(System.Int32)">
+            <summary>
+            Eject the CD drive door.
+            </summary>
+            <param name="DriveIndex">The CD drive index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AudioCDReaderLib.AudioCDReader.CloseCD(System.Int32)">
+            <summary>
+            Close the CD drive door.
+            </summary>
+            <param name="DriveIndex">The CD drive index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AudioCDReaderLib.AudioCDReader.GetDevices">
+            <summary>
+            Get a list of the CD devices that installed on the local machine.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AudioCDReaderLib.AudioCDReader.LoadTracks(System.Int32)">
+            <summary>
+            Load all the tracks of the audio CD to the _m_lstTOC list.
+            </summary>
+            <param name="DriveIndex">The CD drive index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AudioCDReaderLib.AudioCDReader.GetTracks(System.Int32)">
+            <summary>
+            Get all the tracks of the audio CD to the files list.
+            </summary>
+            <param name="DriveIndex">The CD drive index.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiInquiry">
+            <summary>
+            Vom Laufwerk zurückgegebene Inquiry Struktur
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiFormatedTocTrack">
+            <summary>
+            Vom Laufwerk für Read Toc (Formatierte TOC)
+            zurückgegebene Track Info Struktur
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiFullTocPacket">
+            <summary>
+            Vom Laufwerk für Read Toc (komplette TOC)
+            zurückgegebene Packet Struktur
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiFormatedToc">
+            <summary>
+            Vom Laufwerk für Read Toc (Formatierte TOC)
+            zurückgegebene Header Struktur
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiFullToc">
+            <summary>
+            Vom Laufwerk für Read Toc (komplette TOC)
+            zurückgegebene Header Struktur
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiInquiryResult">
+            <summary>
+            Die wohl einzigst interessanten Daten von Inquiry
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiTocTrack">
+            <summary>
+            Track Informationen
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ScsiTrackInformation">
+            <summary>
+            Von Read Track Information zurückgegebene Struktur
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.ReadCDFlags">
+            <summary>
+            Flags für ReadCD
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.RotationControl">
+            <summary>
+            Rotationsmodus für SetCDSpeed
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.TrackType">
+            <summary>
+            Allgemeiner Typ der Daten eines Tracks
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.TrackMode">
+            <summary>
+            Datenmodus eines Tracks
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.QSubInfo">
+            <summary>
+            Im Q Sub-Channel gespeicherte Infos
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.QSubControlFlags">
+            <summary>
+            Im Q Sub-Channel gespeicherte Infos
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.TocFormat">
+            <summary>
+            TOC Format für ReadTOC
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.TimeFormat">
+            <summary>
+            Zeitformat für ReadTOC (nur für FormatedToc)
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.LoUnloadAction">
+            <summary>
+            Von LoadUnload auszuführende Aktion
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.PreventRemovalAction">
+            <summary>
+            Von PreventMediumRemoval auszuführende Aktion
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Commands.PowerCondition">
+            <summary>
+            Zustand des Laufwerks setzen
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.TestUnitReady(AudioCDReaderLib.Spti)">
+            <summary>
+            Prüft, ob Laufwerk bereit.
+            Diesen Befehl muss jedes Laufwerk kennen.
+            </summary>
+            <param name="device">Spti Wrapper</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.Inquiry(AudioCDReaderLib.Spti,AudioCDReaderLib.Commands.ScsiInquiryResult@)">
+            <summary>
+            Gibt den Namen des Laufwerks zurück.
+            Muss jedes Laufwerk beherrschen.
+            </summary>
+            <param name="device">Spti Wrapper</param>
+            <param name="result">Zurückgegebener Laufwerksname</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.LoadUnload(AudioCDReaderLib.Spti,AudioCDReaderLib.Commands.LoUnloadAction,System.Boolean)">
+            <summary>
+            Läd oder entläd das Medium
+            </summary>
+            <param name="device">Spti Wrapper</param>
+            <param name="action">Auszuführende Aktion</param>
+            <param name="immed">Nicht auf Ende der Aktion warten</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.StartStopUnit(AudioCDReaderLib.Spti,AudioCDReaderLib.Commands.PowerCondition,AudioCDReaderLib.Commands.LoUnloadAction,System.Boolean)">
+            <summary>
+            Setzt den Strommodus des Laufwerks
+            oder läd oder wirft das Medium aus
+            </summary>
+            <param name="device">Spti Wrapper</param>
+            <param name="condition">Strommodus</param>
+            <param name="action">Auszuführende Aktion</param>
+            <param name="immed">Nicht auf Ende der Aktion warten</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.PreventAllowMediumRemoval(AudioCDReaderLib.Spti,AudioCDReaderLib.Commands.PreventRemovalAction)">
+            <summary>
+            Sperrt und gibt Medium frei
+            </summary>
+            <param name="device">Spti Wrapper</param>
+            <param name="lock">Aktion</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.ReadTOC(AudioCDReaderLib.Spti,AudioCDReaderLib.Commands.TimeFormat,AudioCDReaderLib.Commands.TocFormat,System.Byte,System.Byte[]@)">
+            <summary>
+            Liest (formatierte/komplette) TOC, PMA, ATIP oder CD-Text
+            </summary>
+            <param name="Device">Spti Wrapper</param>
+            <param name="Time">Zeitformat</param>
+            <param name="TocFmt">TOC Format</param>
+            <param name="TrackSessionNr">Track/Sessionnummer</param>
+            <param name="Data">Vom Laufwerk zurückgegebene Daten</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.ReadTrackInformation(AudioCDReaderLib.Spti,System.Byte,AudioCDReaderLib.Commands.ScsiTrackInformation@)">
+            <summary>
+            Liest Track Infos aus
+            </summary>
+            <param name="Device">Spti Wrapper</param>
+            <param name="track">Nummer des Tracks</param>
+            <param name="info">Vom Laufwerk zurückgegebene Daten</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.SetCDSpeed(AudioCDReaderLib.Spti,AudioCDReaderLib.Commands.RotationControl,System.Int16,System.Int16)">
+            <summary>
+            Setzt die Lese- und Schreibgeschwindigkeit
+            </summary>
+            <param name="Device">Spti Wrapper</param>
+            <param name="rotation">Rotationsmodus</param>
+            <param name="ReadSpeed">Lesegeschwindigkeit (FFFFh = Maximum)</param>
+            <param name="WriteSpeed">Schreibgeschwindigkeit (FFFFh = Maximum)</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.ReadCD(AudioCDReaderLib.Spti,System.Int32,System.Int32,AudioCDReaderLib.Commands.ReadCDFlags,System.IntPtr,System.Int32)">
+            <summary>
+            Liest Sektoren von einer CD
+            </summary>
+            <param name="Device">Spti Wrapper</param>
+            <param name="StartLBA">Startsektor</param>
+            <param name="Sectors">Anzahl an Sektoren</param>
+            <param name="Flags">Leseflags</param>
+            <param name="pBuffer">Lesebuffer</param>
+            <param name="BufferLen">Bufferlänge</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.TocGetFullOLD(AudioCDReaderLib.Spti,System.Byte[])">
+            <summary>
+            Extrahiert Trackinfos aus einem
+            von ReadTOC für Format "FullTOC"
+            zurückgegebenen Byte Array
+            </summary>
+            <param name="Device">Spti Wrapper</param>
+            <param name="data">TOC als Byte Array</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.TocGetFormated(AudioCDReaderLib.Spti,System.Byte[],AudioCDReaderLib.Commands.TimeFormat)">
+            <summary>
+            Extrahiert Trackinfos aus einem
+            von ReadTOC für Format "FormatedTOC"
+            zurückgegebenen Byte Array
+            </summary>
+            <param name="Device">Spti Wrapper</param>
+            <param name="data">TOC als Byte Array</param>
+            <param name="time">In ReadTOC verwendetes Zeitformat</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.AddCDB8(System.Byte[]@,System.Int32,System.Byte)">
+            <summary>
+            Or Verknüpfung zweier Bytes in ein Byte Array speichern
+            </summary>
+            <param name="cdb">Byte Array</param>
+            <param name="index">Index</param>
+            <param name="value">Zu verknüpfender Wert</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.PutCDB8(System.Byte[]@,System.Int32,System.Byte)">
+            <summary>
+            8 Bit Wert in Byte Array speichern
+            </summary>
+            <param name="cdb">Byte Array</param>
+            <param name="index">Index</param>
+            <param name="value">Wert</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.PutCDB16(System.Byte[]@,System.Int32,System.Int16)">
+            <summary>
+            16 Bit Wert in Byte Array speichern
+            </summary>
+            <param name="cdb">Byte Array</param>
+            <param name="index">Index</param>
+            <param name="value">Wert</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.PutCDB24(System.Byte[]@,System.Int32,System.Int32)">
+            <summary>
+            24 Bit Wert in Byte Array speichern
+            </summary>
+            <param name="cdb">Byte Array</param>
+            <param name="index">Index</param>
+            <param name="value">Wert</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.PutCDB32(System.Byte[]@,System.Int32,System.Int32)">
+            <summary>
+            32 Bit Wert in Byte Array speichern
+            </summary>
+            <param name="cdb">Byte Array</param>
+            <param name="index">Index</param>
+            <param name="value">Wert</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.ReverseI16(System.Int16)">
+            <summary>
+            Die Bytes eines 16 Bit Werts tauschen
+            (AABBh wird zu BBAAh)
+            </summary>
+            <param name="short_in">16 Bit Wert</param>
+            <returns>16 Bit Wert</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Commands.ReverseI32(System.Int32)">
+            <summary>
+            Die Bytes eines 32 Bit Wertes tauschen
+            (AABBCCDDh wird zu DDCCBBAAh)
+            </summary>
+            <param name="int_in">32 Bit Wert</param>
+            <returns>32 Bit Wert</returns>
+        </member>
+        <member name="T:AudioCDReaderLib.Msf">
+            <summary>
+            Datentyp für Minuten, Sekunden und Frames
+            </summary>
+        </member>
+        <member name="F:AudioCDReaderLib.Msf.SamplesPerFrame">
+            <summary>
+            Audio Samples, die in 1 CD Frame passen
+            </summary>
+            <remarks>Ein Audio Track hat 16 Bit Stereo Samples bei 44.1 kHz</remarks>
+        </member>
+        <member name="F:AudioCDReaderLib.Msf.FramesPerSecond">
+            <summary>
+            Anzahl an Frames, die in 1 Sekunde passen
+            </summary>
+        </member>
+        <member name="F:AudioCDReaderLib.Msf.SecondsPerMinute">
+            <summary>
+            Sekunden pro Minute
+            </summary>
+        </member>
+        <member name="F:AudioCDReaderLib.Msf.m_m">
+            <summary>
+            Minuten
+            </summary>
+        </member>
+        <member name="F:AudioCDReaderLib.Msf.m_s">
+            <summary>
+            Sekunden
+            </summary>
+        </member>
+        <member name="F:AudioCDReaderLib.Msf.m_f">
+            <summary>
+            Frames
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.#ctor">
+            <summary>
+            Initialisiert die MSF Klasse
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.#ctor(System.Int32)">
+            <summary>
+            Initialisiert die MSF Klasse mit der
+            übergebenen Anzahl an Frames
+            </summary>
+            <param name="lba">Frames, die in das MSF Format
+            umgerechnet werden sollen</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.#ctor(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initialisiert die MSF Klasse mit
+            dem übergebenen Zeitwert
+            </summary>
+            <param name="mins">Minuten (0-255)</param>
+            <param name="secs">Sekunden (0-255)</param>
+            <param name="frms">Frames (0-255)</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.SetLBA(AudioCDReaderLib.Msf,System.Int32)">
+            <summary>
+            LBA im MSF umrechnen und einer MSF Klasse zuweisen
+            </summary>
+            <param name="clsMSF">MSF Klasse</param>
+            <param name="lba">Anzahl Frames</param>
+            <remarks>clsMSF darf nicht Null sein</remarks>
+        </member>
+        <member name="P:AudioCDReaderLib.Msf.M">
+            <summary>
+            Gibt Minuten zurück oder setzt sie
+            </summary>
+            <returns>Wert von 0-255 in Minuten</returns>
+        </member>
+        <member name="P:AudioCDReaderLib.Msf.S">
+            <summary>
+            Gibt Sekunden zurück oder setzt sie
+            </summary>
+            <returns>Wert von 0-255 in Sekunden</returns>
+        </member>
+        <member name="P:AudioCDReaderLib.Msf.F">
+            <summary>
+            Gibt Frames zurück oder setzt sie
+            </summary>
+            <returns>Wert von 0-255 in Frames</returns>
+            <remarks>1 Frame = 1 Sektor</remarks>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.Parse(System.String)">
+            <summary>
+            Wandelt einen String in MSF um
+            </summary>
+            <param name="strMSF">Zeitwert als String</param>
+            <returns>extrahierter Zeitwert auf String</returns>
+            <remarks>Geeignet als Format ist "mm:ss:ff" oder
+            auch "mm:ss:ff"</remarks>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.FromMSF(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            MSF Klasse aus Minuten, Sekunden, Frames
+            </summary>
+            <param name="mins">Minuten (0-255)</param>
+            <param name="secs">Sekunden (0-255)</param>
+            <param name="frms">Frames (0-255)</param>
+            <returns>MSF Klasse</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.FromLBA(System.Int32)">
+            <summary>
+            MSF aus Frames
+            </summary>
+            <param name="lba">Anzahl an Frames</param>
+            <returns>MSF Klasse</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.ToLBA">
+            <summary>
+            MSF nach Frames
+            </summary>
+            <returns>Anzahl an Frames (Sektoren/Blöcke)</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.ToString">
+            <summary>
+            Formatiert Zeitwert in "mm:ss.ff"
+            </summary>
+            <returns>MSF als String</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.Equals(System.Object)">
+            <summary>
+            Prüft, ob 2 MSF Werte gleich sind
+            </summary>
+            <param name="obj">MSF Klasse</param>
+            <returns>True, wenn die Objekte den gleichen Wert haben</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Addition(System.String,AudioCDReaderLib.Msf)">
+            <summary>
+            String Verknüpfung
+            </summary>
+            <param name="strValue">String</param>
+            <param name="msf1">MSF Klasse</param>
+            <returns>Verknüpfter String</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Addition(AudioCDReaderLib.Msf,System.String)">
+            <summary>
+            String Verknüpfung
+            </summary>
+            <param name="msf1">MSF Klasse</param>
+            <param name="strValue">String</param>
+            <returns>Verknüpfter String</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Implicit(AudioCDReaderLib.Msf)~System.Int32">
+            <summary>
+            Konvertiert MSF in Frames
+            </summary>
+            <param name="msf1">MSF Klasse</param>
+            <returns>Anzahl an Frames</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Implicit(AudioCDReaderLib.Msf)~System.String">
+            <summary>
+            Formatiert MSF in einem String
+            </summary>
+            <param name="msf1">MSF Klasse</param>
+            <returns>String Repräsentation der MSF im Format "mm:ss.ff"</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Implicit(System.Int32)~AudioCDReaderLib.Msf">
+            <summary>
+            Konvertiert Frames in MSF
+            </summary>
+            <param name="value">Anzahl an Frames</param>
+            <returns>MSF Klasse</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Equality(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Vergleicht 2 MSF Werte miteinander
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>True für Gleichheit</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Inequality(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Vergleicht 2 MSF Werte miteinander
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>True für ungleiche Werte</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_LessThan(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Vergleicht 2 MSF Werte miteinander
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>True für MSF Wert 1 kleiner als MSF Wert 2</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_GreaterThan(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Vergleicht 2 MSF Werte miteinander
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>True für MSF Wert 1 größer als MSF Wert 2</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_LessThanOrEqual(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Vergleicht 2 MSF Werte miteinander
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>True für MSF Wert 1 kleiner gleich MSF Wert 2</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_GreaterThanOrEqual(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Vergleicht 2 MSF Werte miteinander
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>True für MSF Wert 1 größer gleich MSF Wert 2</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Addition(AudioCDReaderLib.Msf,System.Int32)">
+            <summary>
+            Addiert einen MSF Wert mit Frames
+            </summary>
+            <param name="msf1">MSF Wert</param>
+            <param name="lba">Anzahl an Frames</param>
+            <returns>Summand als MSF</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Addition(System.Int32,AudioCDReaderLib.Msf)">
+            <summary>
+            Addiert einen MSF Wert mit Frames
+            </summary>
+            <param name="lba">Anzahl an Frames</param>
+            <param name="msf2">MSF Wert</param>
+            <returns>Summand als MSF</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Addition(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Addiert 2 MSF Werte miteinander
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>Summand als MSF</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Subtraction(AudioCDReaderLib.Msf,System.Int32)">
+            <summary>
+            Subtrahiert Frames von einem MSF Wert
+            </summary>
+            <param name="msf1">MSF Wert</param>
+            <param name="lba">Anzahl an Frames</param>
+            <returns>Subtrahend als MSF</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Subtraction(System.Int32,AudioCDReaderLib.Msf)">
+            <summary>
+            Subtrahiert MSF von Frames
+            </summary>
+            <param name="lba">Anahl an Frames</param>
+            <param name="msf2">MSF Wert</param>
+            <returns>Subtrahend als MSF</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.op_Subtraction(AudioCDReaderLib.Msf,AudioCDReaderLib.Msf)">
+            <summary>
+            Subtrahiert einen MSF Wert vom anderen
+            </summary>
+            <param name="msf1">MSF Wert 1</param>
+            <param name="msf2">MSF Wert 2</param>
+            <returns>Subtrahend als MSF</returns>
+        </member>
+        <member name="F:AudioCDReaderLib.Msf.disposedValue">
+            <summary>
+            Gibt an, ob Dispose schon aufgerufen worden ist
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.Dispose(System.Boolean)">
+            <summary>
+            Befreit alle Resourcen der Klasse
+            </summary>
+            <param name="disposing">Resourcen befreien</param>
+        </member>
+        <member name="M:AudioCDReaderLib.Msf.Dispose">
+            <summary>
+            Befreit alle Resourcen der Klasse
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Spti">
+            <summary>
+            Kommunikationsbrücke zwischen Programm
+            und SCSI/ATAPI/USB/Firwire Laufwerken
+            </summary>
+            <remarks>Erst ab Win NT lauffähig</remarks>
+        </member>
+        <member name="T:AudioCDReaderLib.Spti.IoScsiCapabilities">
+            <summary>
+            Für IOCTL_SCSI_GET_CAPABILITIES
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Spti.ScsiAddress">
+            <summary>
+            Für IOCTL_SCSI_GET_ADDRESS
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Spti.ScsiPassThroughDirect">
+            <summary>
+            Für IOCTL_SCSI_PASS_THROUGH_DIRECT
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Spti.SenseInfoData">
+            <summary>
+            Sense Info (quasi vom Laufwerk geworfene Exception)
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Spti.ScsiPassThroughDirectWSI">
+            <summary>
+            Für IOCTL_SCSI_PASS_THROUGH,
+            aber mit Sense Info Buffer
+            </summary>
+        </member>
+        <member name="T:AudioCDReaderLib.Spti.DriveHandle">
+            <summary>
+            Interne Verwaltung von Laufwerkshandles
+            </summary>
+        </member>
+        <member name="P:AudioCDReaderLib.Spti.DeviceCount">
+            <summary>
+            Anzahl an gefundenen Laufwerken
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.DeviceName(System.Int32)">
+            <summary>
+            Name eines Laufwerks (vom Setup API)
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.DeviceAddress(System.Int32)">
+            <summary>
+            Bus Adresse eines Laufwerks
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.DeviceMaximumTransferLength(System.Int32)">
+            <summary>
+            Größte pro Befehl zu transferierende Datenmenge
+            für ein Laufwerk
+            </summary>
+        </member>
+        <member name="P:AudioCDReaderLib.Spti.LastSenseKey">
+            <summary>
+            Sense Key aus Sense Info des letzten Befehls
+            </summary>
+        </member>
+        <member name="P:AudioCDReaderLib.Spti.LastAddSenseCode">
+            <summary>
+            Additional Sense Code aus Sense Info des letzten Befehls
+            </summary>
+        </member>
+        <member name="P:AudioCDReaderLib.Spti.LastAdSenseQualifier">
+            <summary>
+            Additional Sense Qualifier aus Sense Info des letzten Befehls
+            </summary>
+        </member>
+        <member name="P:AudioCDReaderLib.Spti.SelectedDevice">
+            <summary>
+            Index des ausgewählten Laufwerks
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.SelectDevice(System.Int32)">
+            <summary>
+            Laufwerk auswählen (nötig für ExecuteCommand)
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.ExecuteCommand(System.Byte[],System.Byte,AudioCDReaderLib.Spti.DataDirection,System.IntPtr,System.Int32,System.UInt32)">
+            <summary>
+            Befehl an ausgewähltes Laufwerk senden
+            </summary>
+            <param name="cdb">Command Descriptor Block (maximal 16 Bytes)</param>
+            <param name="cdblen">CDB Größe in Bytes</param>
+            <param name="direction">Datenrichtung</param>
+            <param name="pBuffer">Pointer auf Datenbuffer</param>
+            <param name="bufferlen">Datenbufferlänge</param>
+            <param name="timeout">Timeout in Sekunden</param>
+            <returns>Status des Befehls</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.CloseDrives">
+            <summary>
+            Handles aller Laufwerke schließen
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.FindDrives">
+            <summary>
+            angeschlossene CD/DVD-ROM Laufwerke finden
+            per Setup API
+            </summary>
+            <returns>Anzahl gefundener Laufwerke</returns>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.GetDevName(System.Int32,System.Int32)">
+            <summary>
+            Laufwerksname über Setup API herausfinden
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.GetDevPath(System.Int32,System.Int32,System.Guid)">
+            <summary>
+            Laufwerkspfad über Setup API herausfinden
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.GetDevBusPosition(System.Int32)">
+            <summary>
+            Bus Position eines Laufwerks ermitteln
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.GetDevCapabilities(System.Int32)">
+            <summary>
+            Fähigkeiten des Adapters, an dem ein Laufwerk hängt
+            </summary>
+        </member>
+        <member name="M:AudioCDReaderLib.Spti.CtlCode(System.Int32,System.Int32,AudioCDReaderLib.Spti.Method,AudioCDReaderLib.Spti.FileAccess)">
+            <summary>
+            Control Code zusammenshiften
+            </summary>
+        </member>
+        <member name="M:AudioConverterLib.cACM.PtrToStructure``1(System.IntPtr)">
+            <summary>
+            Pointer to Structure
+            </summary>
+        </member>
+        <member name="P:AudioConverterLib.cACMBridg.BufferSize">
+            <summary>
+            The buffer size of the conversion process. The default size is 1600 and the minimum size is 100.
+            </summary>
+            
+        </member>
+        <member name="T:CSID3TagsLib.ImageType">
+            <summary>
+            The image type of the image tag. This can be: Other, FileIcon, OtherFileIcon, FrontCover, BackCover, LeafletPage, Media, LeadArtist, Artist, Conductor, Band, Composer, Lyricist, RecordingLocation, DuringRecording, DuringPerformance, MovieScreenCapture, ColoredFish, Illustration, BandLogo and PublisherLogo.
+            </summary>
+        </member>
+        <member name="T:CSID3TagsLib.TagTypes">
+            <summary>
+            The tag types list.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagComposers">
+            <summary>
+            A list of strings for the TagComposers of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagArtists">
+            <summary>
+            A list of strings for the TagArtists of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagPerformers">
+            <summary>
+            A list of strings for the TagPerformers of the opened multimedia file. In some cases this tag will be the TagArtists tag.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagGenres">
+            <summary>
+            A list of strings for the TagComposers of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagImages">
+            <summary>
+            A list of ImageTag class for the TagImages of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.FileName">
+            <summary>
+            The file name of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagTitle">
+            <summary>
+            The TagTitle tag of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagLyrics">
+            <summary>
+            The lyrics of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagAlbum">
+            <summary>
+            The album name of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagComment">
+            <summary>
+            The comment of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagCopyright">
+            <summary>
+            The copyright of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagYear">
+            <summary>
+            The created year of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagTrack">
+            <summary>
+            The Track number of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.FileProperties">
+            <summary>
+            The properties of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.RatingStars">
+            <summary>
+            The rating stars of the opened multimedia file. This value can be 0 (unrated) to 5 (best).
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.TagRating">
+            <summary>
+            The rating value of the opened multimedia file. This value can be 0 (unrated) to 255 (best).
+            </summary>
+        </member>
+        <member name="P:CSID3TagsLib.ID3TagsLib.RatingUser">
+            <summary>
+            The user of the rating tag. The default value is: "Windows Media Player 9 Series".
+            </summary>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.ClearAllTags">
+            <summary>
+            Clear all the tags of the selected multimedia file.
+            </summary>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.ClearTag(CSID3TagsLib.TagTypes)">
+            <summary>
+            Remove a tag type from the opened multimedia file.
+            </summary>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.Init(System.String)">
+            <summary>
+            Init the library with your registration key. Use 'Trial Mode.' on trial. This function must be call before using any functionality of the library.
+            </summary>
+            <param name="sKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.Open(System.String)">
+            <summary>
+            Open a multimedia file. You can add/get/set tags only after calling this function. The supported format are: avi, mp3, mpc, mp4, asf, aiff, aif, aifc, tta, wv, ogg, flac, spx, opus, ape, xiph, wma, jpg, jpeg, png, mpg, mpeg and many other multimedia files.
+            </summary>
+            <param name="file_name"></param>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.Set">
+            <summary>
+            Set the ID3 tags to the opened multimedia files.
+            </summary>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.AddImageFromFile(System.String,System.String,CSID3TagsLib.ImageType)">
+            <summary>
+            Set the ID3 tags to the opened multimedia files.
+            </summary>
+        </member>
+        <member name="F:CSID3TagsLib.ID3TagsLib.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CSID3TagsLib.ID3TagsLib.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Microncode.Lic.frmLicense.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Microncode.Lic.frmLicense.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Microncode.Lic.frmLicense.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Microncode.Lic.LicenseLib.CheckLicense(System.Windows.Forms.IWin32Window,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Check the license of the library. If the registration is OK a MessageBox will be display with a message 'The registration is OK.', otherwise, a registration window will be display with an instructions of register the library.
+            </summary>
+        </member>
+        <member name="T:Options.Core.FileProperties">
+            <summary>
+            File properties.
+            </summary>
+        </member>
+        <member name="P:Options.Core.FileProperties.Length">
+            <summary>
+            Length.
+            </summary>
+        </member>
+        <member name="P:Options.Core.FileProperties.WaveFormat">
+            <summary>
+            Format.
+            </summary>
+        </member>
+        <member name="P:Options.Core.FileProperties.SizeByte">
+            <summary>
+            The size in byte.
+            </summary>
+        </member>
+        <member name="T:Options.Core.FileSelectorTypeEditor">
+            <summary>
+            Customer UITypeEditor that pops up a
+            file selector dialog
+            </summary>
+        </member>
+        <member name="T:Options.Core.ListTypeConverterIn">
+            <summary>
+            Get input device type
+            </summary>
+        </member>
+        <member name="T:Options.Core.ListTypeConverterOut">
+            <summary>
+            Get output device type
+            </summary>
+        </member>
+        <member name="T:Options.Core.SourceFile">
+            <summary>
+            Source file.
+            </summary>
+        </member>
+        <member name="M:Options.Core.SourceFile.#ctor(System.String,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Source file with a specific length.
+            </summary>
+            <param name="File"></param>
+            <param name="From"></param>
+            <param name="To"></param>
+        </member>
+        <member name="M:Options.Core.SourceFile.#ctor(System.String)">
+            <summary>
+            Source file with all the length.
+            </summary>
+            <param name="File"></param>
+        </member>
+        <member name="P:Options.Core.SourceFile.File">
+            <summary>
+            The file name.
+            </summary>
+        </member>
+        <member name="P:Options.Core.SourceFile.From">
+            <summary>
+            From length.
+            </summary>
+        </member>
+        <member name="P:Options.Core.SourceFile.To">
+            <summary>
+            To length.
+            </summary>
+        </member>
+        <member name="T:Options.Core.WaveFormat">
+            <summary>
+            The wave format.
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.Format">
+            <summary>
+            Format.
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.Channels">
+            <summary>
+            Channels.
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.SampleRate">
+            <summary>
+            SampleRate
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.BytesPerSecond">
+            <summary>
+            BytesPerSecond
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.BlockAlign">
+            <summary>
+            BlockAlign
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.BitsPerSample">
+            <summary>
+            BitsPerSample
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.ExtraSize">
+            <summary>
+            ExtraSize
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.BytesPerSample">
+            <summary>
+            BytesPerSample
+            </summary>
+        </member>
+        <member name="P:Options.Core.WaveFormat.BytesPerBlock">
+            <summary>
+            BytesPerBlock
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.AudioConverter">
+            <summary>
+            The AudioConverter main class.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.OperationState">
+            <summary>
+            The operation state of the control. This can be Ready, Running and Paused.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.FileProperties">
+            <summary>
+            The properties of the opened media file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.SourceFiles">
+            <summary>
+            A list of ImageTag class for the TagImages of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.Format">
+            <summary>
+            The format of the destination audio file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.Bitrate">
+            <summary>
+            The bitrate of the destination audio file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.BitrateVal">
+            <summary>
+            Set the bitrate of the destination audio file by value.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.Samplerate">
+            <summary>
+            The samplerate of the destination audio file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.SamplerateVal">
+            <summary>
+            The samplerate of the destination audio file by value.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.Bits">
+            <summary>
+            The bit-depth of the destination audio file (for WAV format only).
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.Channels">
+            <summary>
+            The channels of the destination audio file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.DecodeMode">
+            <summary>
+            The decoding mode of the operation. This can be from local codecs or by using the FFMpeg libraries.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.DestinatioFile">
+            <summary>
+            The destination file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.ACMTag">
+            <summary>
+            The selected ACM tag (for ACM encoding). The default tag is PCM.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.ACMFormat">
+            <summary>
+            The selected ACM format of the selected ACM tag(for ACM encoding). The default format is 44.100 kHz, 16 Bit, Stereo.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.CurrentTrack">
+            <summary>
+            The current processing track number.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.UserName">
+            <summary>
+            The user name.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.UserKey">
+            <summary>
+            The user key.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagComposers">
+            <summary>
+            A list of strings for the TagComposers of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagArtists">
+            <summary>
+            A list of strings for the TagArtists of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagPerformers">
+            <summary>
+            A list of strings for the TagPerformers of the opened multimedia file. In some cases this tag will be the TagArtists tag.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagGenres">
+            <summary>
+            A list of strings for the TagGenres of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagImages">
+            <summary>
+            A list of ImageTag class for the TagImages of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.FileNameID3Tags">
+            <summary>
+            The file name of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagTitle">
+            <summary>
+            The TagTitle tag of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagLyrics">
+            <summary>
+            The lyrics of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagAlbum">
+            <summary>
+            The album name of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagComment">
+            <summary>
+            The comment of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagCopyright">
+            <summary>
+            The copyright of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagYear">
+            <summary>
+            The created year of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagTrack">
+            <summary>
+            The Track number of the opened multimedia file.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.TagRating">
+            <summary>
+            The rating value of the opened multimedia file. This value can be 0 (unrated) to 255 (best).
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.RatingUser">
+            <summary>
+            The user of the rating tag. The default value is: "Windows Media Player 9 Series".
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.AudioConverter.RatingStars">
+            <summary>
+            The rating stars of the opened multimedia file. This value can be 0 (unrated) to 5 (best).
+            </summary>
+        </member>
+        <member name="E:CSAudioConverter.AudioConverter.ConvertProgress">
+            <summary>
+            Convert progress.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.AudioConverter.ConvertProgressEventHandler">
+            <summary>
+            Convert progress handler.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:CSAudioConverter.AudioConverter.ConvertError">
+            <summary>
+            Convert error.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.AudioConverter.ConvertErrorEventHandler">
+            <summary>
+            Convert error.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:CSAudioConverter.AudioConverter.ConvertStart">
+            <summary>
+            Convert start.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.AudioConverter.ConvertStartEventHandler">
+            <summary>
+            Convert start handler.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:CSAudioConverter.AudioConverter.ConvertDone">
+            <summary>
+            Convert done.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.AudioConverter.ConvertDoneEventHandler">
+            <summary>
+            Convert done handler.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:CSAudioConverter.AudioConverter.ConvertAborted">
+            <summary>
+            Convert aborted.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.AudioConverter.ConvertAbortedEventHandler">
+            <summary>
+            Convert aborted handler.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.CheckLicense(System.Boolean)">
+            <summary>
+            Check the user license of the component. 
+            </summary>
+            <param name="DisplayRegistrationWindow">Display the registration form or not.</param>
+            <returns>True if the license is OK, false if not.</returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.RaiseError(System.Exception)">
+            <summary>
+            Raise Error
+            </summary>
+            <param name="ex">The error exception</param>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Supported(System.String)">
+            <summary>
+            Check if the source media file supported by the decoder.
+            </summary>
+            <param name="SourceFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Seekable(System.String)">
+            <summary>
+            Check if the source media file is seekable.
+            </summary>
+            <param name="SourceFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Cancel">
+            <summary>
+            Cancel the current operation.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Pause">
+            <summary>
+            Pause the current operation.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Resume">
+            <summary>
+            Resume the current operation.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetDecoderModes">
+            <summary>
+            Get the supported channels to a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetChannels">
+            <summary>
+            Get the supported channels to a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetBits">
+            <summary>
+            Get the supported bits to a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetSamplerates">
+            <summary>
+            Get the supported samplerates to a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetFormats">
+            <summary>
+            Get the supported formats to a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetBitrates">
+            <summary>
+            Get the supported bitrates to a list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Open(System.String)">
+            <summary>
+            Open a source media file and get some information about the source.
+            </summary>
+            <param name="SourceFile"></param>
+            <returns>True id succeeded, false if failed.</returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Convert">
+            <summary>
+            Start the operation.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.ConvertACM_APE_OGG">
+            <summary>
+            Convert to ACM APE or OGG. This method uses the AudioConverterLib in order to encode the destination media files and CSCore in order to decode the source media files.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.ConvertAAC_MP2_MP3_WMA">
+            <summary>
+            This method uses the CSCore library in order to encode the destination media files and to decode the source media files.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.ConvertWAV">
+            <summary>
+            This method uses the CSCore library in order to encode the destination media files and to decode the source media files.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.backgroundWorker_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Run the operation in the background under a new process.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.backgroundWorker_ProgressChanged(System.Object,System.ComponentModel.ProgressChangedEventArgs)">
+            <summary>
+            Update the user interface with the current progress.
+            </summary>
+            <param name="sender">The sender object</param>
+            <param name="e">ProgressChangedEventArgs</param>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.backgroundWorker_RunWorkerCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            Notification that the burn background thread has completed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.ClearAllTags(System.String)">
+            <summary>
+            Clear all the tags of the selected multimedia file.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.ClearTag(System.String,CSID3TagsLib.TagTypes)">
+            <summary>
+            Remove a tag type from the opened multimedia file.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.OpenID3Tags(System.String)">
+            <summary>
+            Open a multimedia file. You can add/get/set tags only after calling this function. The supported format are: avi, mp3, mpc, mp4, asf, aiff, aif, aifc, tta, wv, ogg, flac, spx, opus, ape, xiph, wma, jpg, jpeg, png, mpg, mpeg and many other multimedia files.
+            </summary>
+            <param name="file_name"></param>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.SetID3Tags(System.String)">
+            <summary>
+            Set the ID3 tags to the opened multimedia files.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.AddImageFromFile(System.String,System.String,CSID3TagsLib.ImageType)">
+            <summary>
+            Set the ID3 tags to the opened multimedia files.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetFFMpegFormats``1">
+            <summary>
+            Get all the supported formats, codecs and extensions of the FFMpeg library.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetEnumValue(System.Enum)">
+            <summary>
+            Get the value of the selected item of the Enum
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetEnumValue``1(System.String)">
+            <summary>
+            Get the value of the selected item of the Enum
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetACMTags(CSAudioConverter.ACM_FORMAT,System.Int32,System.Int32,System.Int16,System.Int16)">
+            <summary>
+            Get ACM tags according to the ACMFormat. You can also set the audio propitiates to get the best results according to the source audio file.
+            </summary>
+            <param name="ACMFormat"></param>
+            <param name="FormatTag"></param>
+            <param name="SamplesPerSec"></param>
+            <param name="Channels"></param>
+            <param name="BitsPerSample"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.GetACMFormats(System.String)">
+            <summary>
+            Get the ACM formats according to the ACMTag.
+            </summary>
+            <param name="ACMTag">The ACM codec tag to get the supported formats for.</param>
+            <returns></returns>
+        </member>
+        <member name="F:CSAudioConverter.AudioConverter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:CSAudioConverter.AudioConverter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.FFMpegFormat">
+            <summary>
+            The FFMpeg format type.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.OperationState">
+            <summary>
+            The operation state of the control. This can be Ready, Running and Paused.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.ACM_FORMAT">
+            <summary>
+            The ACM format mode. You can get the ACM codecs and fromat acording to the value of this enum.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.DecodeMode">
+            <summary>
+            The decoder mode of the operation. this can be the LocalCodecs which will use the codecs that installed on the system, or FFMpeg which will use the FFMpeg libraries.If you decide to use the FFMpeg libraries, please make sure the FFMpeg folder with dll files is existed under the output directory of the project.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.Bitrate">
+            <summary>
+            The bitrate of the destination audio file.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.Samplerate">
+            <summary>
+            The samplerate of the destination audio file.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.Bits">
+            <summary>
+            The bit-depth of the destination audio file.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.Channels">
+            <summary>
+            The number of channels of the destination audio file.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.Format">
+            <summary>
+            The format of the destination file, this can be AAC, ACM (WAV), APE, MP2, MP3, OGG, WAV (PCM), and WMA.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.PercentArgs">
+            <summary>
+            The variant of the progress event.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.MessageArgs">
+            <summary>
+            The variant of the error event.
+            </summary>
+        </member>
+        <member name="T:CSAudioConverter.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:CSAudioConverter.Properties.Resources.Formats">
+             <summary>
+               Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+            &lt;ArrayOfFFMpegFormat xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+              &lt;FFMpegFormat&gt;
+                &lt;Name&gt;aa&lt;/Name&gt;
+                &lt;NameLong&gt;Audible AA format files&lt;/NameLong&gt;
+                &lt;Codecs /&gt;
+                &lt;Extensions&gt;
+                  &lt;string&gt;aa&lt;/string&gt;
+                &lt;/Extensions&gt;
+              &lt;/FFMpegFormat&gt;
+              &lt;FFMpegFormat&gt;
+                &lt;Name&gt;aac&lt;/Name&gt;
+                &lt;NameLong&gt;raw ADTS AAC (Advanced Audio Coding)&lt;/NameLong&gt;
+                &lt;Codecs /&gt;
+                &lt;Extensions&gt;
+                  &lt;string&gt;aac&lt;/string [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+    </members>
+</doc>
