@@ -63,7 +63,7 @@ For commercial or any other usage please buy a license to get your own username 
 * The source code of this component is also available.
 
 # License
-- The examples and the component is licensed under MS-PL. 
+- The examples and the component are licensed under MS-PL. 
 - Some external libraries / plugin may lincesed under LGPL.
 
 # Credits
