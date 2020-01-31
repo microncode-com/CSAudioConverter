@@ -1,7 +1,7 @@
 # CSAudioConverter
 .NET component to convert, join and cut many types of audio files.
 
-![alt CSAudioConverter](https://www.microncode.com/images/developers/images/cs-audio-converter/images/cs-audio-converter.png "CSAudioConverter")
+![alt CSAudioConverter](https://www.microncode.com/images/developers/cs-audio-converter/images/cs-audio-converter.png "CSAudioConverter")
 
 # About
 The CSAudioCDRipper is a .NET component that can convert many types of audio (and video) files using C# + VB .NET platform to AAC, APE, MP2, MP3, Vorbis OGG, ACM WAV, PCM WAV and WMA audio files with a built in ID3 tags editor.
